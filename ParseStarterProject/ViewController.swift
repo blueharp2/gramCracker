@@ -1,30 +1,25 @@
 /**
-* Copyright (c) 2015-present, Parse, LLC.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-style license found in the
-* LICENSE file in the root directory of this source tree. An additional grant
-* of patent rights can be found in the PATENTS file in the same directory.
-*/
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 import UIKit
 import Parse
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func imageViewButton(sender: UIButton) {
         print("Button Selected")
+        self.checkForCamera()
+        // self.displayActionController()
         
     }
-    
-//    var photoPicker = UIImagePickerController()
-//    photoPicker.delegate = self
-    
-    
-    
-    
     
     
     override func viewDidLoad() {
@@ -34,9 +29,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     func checkForCamera() -> Bool{
-       if UIImagePickerController.isSourceTypeAvailable(.Camera){
+        if UIImagePickerController.isSourceTypeAvailable(.Camera){
             self.displayActionController()
-       }else{
+            return true
+        }else{
+            self.presentImagePickerFor(.PhotoLibrary)
             return false
         }
     }
@@ -46,7 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let cameraAction = UIAlertAction(title: "Camera", style:.Default) { (alert) -> Void in
             self.presentImagePickerFor(.Camera)
-            }
+        }
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .Default) { (alert) -> Void in
             self.presentImagePickerFor(.PhotoLibrary)
         }
@@ -66,9 +63,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerController.delegate = self
         self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
-    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
 
     
     
@@ -91,9 +99,3 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        }
-}
