@@ -3,14 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="gramCracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,22 +23,30 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-HT-XbN">
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="imageViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nj-M9-PDZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="centerX" secondItem="3kq-pT-PMq" secondAttribute="centerX" id="0Pn-D2-0tn"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ByE-f9-c2y"/>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="width" secondItem="3kq-pT-PMq" secondAttribute="width" id="Nq9-pE-RHd"/>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="height" secondItem="3kq-pT-PMq" secondAttribute="height" id="Phk-cN-3Xu"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="VHf-OP-TYA"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VTC-zI-Ciz"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="hh5-rU-QvB"/>
-                            <constraint firstItem="3kq-pT-PMq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="221:600" constant="80" id="yvT-nz-EGV"/>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="centerY" secondItem="3kq-pT-PMq" secondAttribute="centerY" id="zsU-p3-doG"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="yvT-nz-EGV"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="3kq-pT-PMq" id="D1B-Ok-Ext"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
