@@ -76,7 +76,7 @@ class FilterService {
         
     }
     class func applyChromeEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
-        let filterName = "CIPhotoEffectChrom"
+        let filterName = "CIPhotoEffectChrome"
         let displayName = "Chrome"
         
         let finalImage = setupFilter(filterName, parameters: nil, imageToFilter: image)
