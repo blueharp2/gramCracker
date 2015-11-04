@@ -17,8 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func imageViewButton(sender: UIButton) {
         print("Button Selected")
-        self.checkForCamera()
-        // self.displayActionController()
+        self.displayActionController()
         
     }
     
@@ -30,17 +29,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-    
-    func checkForCamera() -> Bool{
-        if UIImagePickerController.isSourceTypeAvailable(.Camera){
-            self.displayActionController()
-            return true
-        }else{
-            self.presentImagePickerFor(.PhotoLibrary)
-            return false
-        }
     }
     
     func displayActionController(){
@@ -57,6 +45,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         actionController.addAction(cameraAction)
         actionController.addAction(photoLibraryAction)
         actionController.addAction(cancelAction)
+        
+        
+        
+        if !UIImagePickerController.isSourceTypeAvailable(.Camera){
+            cameraAction.enabled = false
+        }
+        if !UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary){
+            photoLibraryAction.enabled = false
+        }
         
         self.presentViewController(actionController, animated: true, completion: nil)
         
@@ -146,9 +143,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //override func viewDidLoad() {
 //        super.viewDidLoad()
-//        
-//        let testObject = PFObject(className: "TestObject")
-//        testObject["gram"] = "cracker"
+//        need line that converts image into data here
+//        let testObject = PFObject(className: "Status")
+//        testObject["image"] = imagedata
 //        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
 //            print("Object has been saved.")
 //        }

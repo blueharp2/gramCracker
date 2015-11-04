@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupParse()
-
         return true
     }
     
@@ -37,5 +36,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(kParseAppID,
             clientKey:kParseClientKey)
     }
-
 }
