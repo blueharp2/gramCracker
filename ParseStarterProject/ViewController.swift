@@ -72,7 +72,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
+        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
+        self.imageView.image = resizedImage
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
