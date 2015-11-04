@@ -21,6 +21,7 @@
 		90BEE2731BE81A6700846232 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BEE2721BE81A6700846232 /* Splash.storyboard */; };
 		90C1C6001BE95CE1000E7099 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C1C5FF1BE95CE1000E7099 /* FilterService.swift */; };
 		90C1C6021BE99530000E7099 /* UIImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C1C6011BE99530000E7099 /* UIImageResizer.swift */; };
+		90CE7FCF1BEAC0E500C3A39E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FCE1BEAC0E500C3A39E /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		90BEE2721BE81A6700846232 /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Splash.storyboard; path = ../Splash.storyboard; sourceTree = "<group>"; };
 		90C1C5FF1BE95CE1000E7099 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterService.swift; path = ../FilterService.swift; sourceTree = "<group>"; };
 		90C1C6011BE99530000E7099 /* UIImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageResizer.swift; sourceTree = "<group>"; };
+		90CE7FCE1BEAC0E500C3A39E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				90CE7FCE1BEAC0E500C3A39E /* API.swift */,
 				90BEE2701BE818C700846232 /* Constants.swift */,
 				90C1C5FF1BE95CE1000E7099 /* FilterService.swift */,
 				907D21341BE861570026D11F /* Controller */,
@@ -237,6 +240,7 @@
 				90C1C6021BE99530000E7099 /* UIImageResizer.swift in Sources */,
 				90C1C6001BE95CE1000E7099 /* FilterService.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				90CE7FCF1BEAC0E500C3A39E /* API.swift in Sources */,
 				90BEE2711BE818C700846232 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
