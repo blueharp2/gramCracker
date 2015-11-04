@@ -21,6 +21,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    @IBAction func filterButtonPressed(sender: UIButton) {
+        presentFilterAlert()
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +74,57 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func presentFilterAlert(){
+        let alertController = UIAlertController(title: "Filters", message: "Pick a filter:", preferredStyle: .ActionSheet)
+        
+        let applyBlackandWhiteEffect = UIAlertAction(title: "Black & White", style: .Default) { (action) -> Void in
+            
+            FilterService.applyBlackandWhiteEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+            
+        }
+        let applyVintageEffect = UIAlertAction(title: "Vintage", style: .Default) { (action) -> Void in
+            
+            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+            
+        }
+        let applyBlurandSparkleEffect = UIAlertAction(title: "Blur & Sparkle", style: .Default) { (action) -> Void in
+            
+            FilterService.applyBlurandSparkleEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+            
+        }
+        let applyChromeEffect = UIAlertAction(title: "Chrome", style: .Default) { (action) -> Void in
+            
+            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                if let filteredImage = filteredImage{
+                    self.imageView.image = filteredImage
+                }
+            })
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+       
+            alertController.addAction(applyBlackandWhiteEffect)
+            alertController.addAction(applyVintageEffect)
+            alertController.addAction(applyBlurandSparkleEffect)
+            alertController.addAction(applyChromeEffect)
+            alertController.addAction(cancelAction)
+        
+        
+                self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
