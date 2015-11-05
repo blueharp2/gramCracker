@@ -28,14 +28,13 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return self.datasource.count
+        return self.status.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(<#T##identifier: String##String#>, forIndexPath: indexPath) as!
-        GalleryViewControllerCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GalleryCollectionViewCell", forIndexPath: indexPath) as! GalleryCollectionViewCell
         
-        let status = self.datasource[indexPath.row]
+        let status = self.status[indexPath.row]
         cell.status = status
         
         return cell
