@@ -26,6 +26,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     
+    @IBAction func UploadImage(sender: UIButton) {
+        
+        sender.enabled = false
+        if let image = self.imageView.image{
+            API.uploadImage(image, completion: { (sucess) -> () in
+                if sucess {
+                    sender.enabled = true
+                  self.presentUploadSucessAlert()
+                }
+            })
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,21 +72,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = sourceType
-        imagePickerController.delegate = self
-        self.presentViewController(imagePickerController, animated: true, completion: nil)
+    func presentUploadSucessAlert(){
+        let alertController = UIAlertController(title: "", message: "Image sucessfully uploaded", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
-        self.imageView.image = resizedImage
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    
     
     func presentFilterAlert(){
         let alertController = UIAlertController(title: "Filters", message: "Pick a filter:", preferredStyle: .ActionSheet)
@@ -124,6 +129,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
                 self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: Image Picker
+    func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = sourceType
+        imagePickerController.delegate = self
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        let resizedImage = UIImage.resizeImage(image, size: CGSize(width: 600, height: 600))
+        self.imageView.image = resizedImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
