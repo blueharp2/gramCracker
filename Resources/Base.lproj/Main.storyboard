@@ -111,7 +111,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6sc-Qp-n52">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6sc-Qp-n52" customClass="GalleryCollectionViewCell" customModule="gramCracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="201" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -134,6 +134,9 @@
                                             <constraint firstItem="7gq-5v-50B" firstAttribute="width" secondItem="6sc-Qp-n52" secondAttribute="width" id="wh8-CO-E2v"/>
                                         </constraints>
                                         <size key="customSize" width="201" height="165"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="7gq-5v-50B" id="cym-8O-LLp"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

@@ -29,7 +29,7 @@ class API {
         }
     }
     
-    class func getStatus() ->([UIImage]?){
+    class func getStatus(completion: ([Status]?) -> ()){
         
         let query = PFQuery(className: "Status")
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in

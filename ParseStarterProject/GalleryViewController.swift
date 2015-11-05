@@ -22,8 +22,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        API.getStatus()
-
     }
 
 

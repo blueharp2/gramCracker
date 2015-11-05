@@ -8,23 +8,20 @@
 
 import UIKit
 
+
+
 class GalleryCollectionViewCell: UICollectionViewCell {
-//
-//    
-//    
-//    
-//    
-    var status: [Status]{
-//        didSet {
-//            if let status = self.status {
-//                self.collectionImageVIew.image = status.image
-//                
-//                }
-        init(status: UIImage){
-            self.status = status
+
+    @IBOutlet var imageView: UIImageView!
+    
+    var status: Status? {
+        didSet {
+            if let status = self.status {
+                self.imageView.image = status.image
+                
+            }
         }
-        
-        }
+    }
     
     class func identifier() ->String{
         return "GalleryCollectionViewCell"
