@@ -28,6 +28,15 @@ class API {
             })
         }
     }
+    
+    class func getStatus() ->([UIImage]?){
+        
+        let query = PFQuery(className: "Status")
+        query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+            print(results.count)
+            for object in results{
+                if let UIImageJPEGRepresentation(imag, 0.7) = imageData
+    }
 }
 
 

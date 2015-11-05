@@ -22,6 +22,8 @@
 		90C1C6001BE95CE1000E7099 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C1C5FF1BE95CE1000E7099 /* FilterService.swift */; };
 		90C1C6021BE99530000E7099 /* UIImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C1C6011BE99530000E7099 /* UIImageResizer.swift */; };
 		90CE7FCF1BEAC0E500C3A39E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FCE1BEAC0E500C3A39E /* API.swift */; };
+		90CE7FD11BEAD78300C3A39E /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FD01BEAD78300C3A39E /* GalleryViewController.swift */; };
+		90CE7FD31BEAE39C00C3A39E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FD21BEAE39C00C3A39E /* Status.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		90C1C5FF1BE95CE1000E7099 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterService.swift; path = ../FilterService.swift; sourceTree = "<group>"; };
 		90C1C6011BE99530000E7099 /* UIImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageResizer.swift; sourceTree = "<group>"; };
 		90CE7FCE1BEAC0E500C3A39E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		90CE7FD01BEAD78300C3A39E /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		90CE7FD21BEAE39C00C3A39E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				90CE7FCE1BEAC0E500C3A39E /* API.swift */,
 				90BEE2701BE818C700846232 /* Constants.swift */,
+				90CE7FCE1BEAC0E500C3A39E /* API.swift */,
 				90C1C5FF1BE95CE1000E7099 /* FilterService.swift */,
+				90CE7FD21BEAE39C00C3A39E /* Status.swift */,
 				907D21341BE861570026D11F /* Controller */,
 				907D21331BE8613A0026D11F /* View */,
 			);
@@ -142,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				90CE7FD01BEAD78300C3A39E /* GalleryViewController.swift */,
 				90C1C6011BE99530000E7099 /* UIImageResizer.swift */,
 			);
 			name = Controller;
@@ -237,7 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				90CE7FD11BEAD78300C3A39E /* GalleryViewController.swift in Sources */,
 				90C1C6021BE99530000E7099 /* UIImageResizer.swift in Sources */,
+				90CE7FD31BEAE39C00C3A39E /* Status.swift in Sources */,
 				90C1C6001BE95CE1000E7099 /* FilterService.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				90CE7FCF1BEAC0E500C3A39E /* API.swift in Sources */,

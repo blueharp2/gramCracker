@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -99,8 +100,58 @@
                     <view key="view" contentMode="scaleToFill" id="9So-pQ-qZy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="B76-se-c7k">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dBb-F9-uhp">
+                                    <size key="itemSize" width="201" height="165"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6sc-Qp-n52">
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="165"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="201" height="165"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7gq-5v-50B">
+                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="165"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="7gq-5v-50B" firstAttribute="centerY" secondItem="6sc-Qp-n52" secondAttribute="centerY" id="1b0-UA-Hew"/>
+                                            <constraint firstItem="7gq-5v-50B" firstAttribute="centerX" secondItem="6sc-Qp-n52" secondAttribute="centerX" id="4iv-3Z-iCJ"/>
+                                            <constraint firstItem="7gq-5v-50B" firstAttribute="height" secondItem="6sc-Qp-n52" secondAttribute="height" id="HOk-Od-bRf"/>
+                                            <constraint firstItem="7gq-5v-50B" firstAttribute="width" secondItem="6sc-Qp-n52" secondAttribute="width" id="wh8-CO-E2v"/>
+                                        </constraints>
+                                        <size key="customSize" width="201" height="165"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B76-se-c7k" firstAttribute="leading" secondItem="9So-pQ-qZy" secondAttribute="leadingMargin" constant="-13" id="XiY-Uu-6ZU"/>
+                            <constraint firstItem="B76-se-c7k" firstAttribute="top" secondItem="9So-pQ-qZy" secondAttribute="topMargin" id="YYy-qA-xRT"/>
+                            <constraint firstItem="B76-se-c7k" firstAttribute="leading" secondItem="9So-pQ-qZy" secondAttribute="leadingMargin" constant="-20" id="pxz-K6-ufb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="B76-se-c7k" secondAttribute="trailing" constant="-20" id="s2P-Pe-58a"/>
+                            <constraint firstItem="tFI-LO-QbF" firstAttribute="top" secondItem="B76-se-c7k" secondAttribute="bottom" id="udY-Ha-ZEc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XiY-Uu-6ZU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Gallery" id="iY7-Jd-vae"/>
                 </viewController>
