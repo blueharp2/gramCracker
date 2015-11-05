@@ -17,8 +17,18 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     var status: Status? {
         didSet {
             if let status = self.status {
-                self.imageView.image = status.image
-                
+
+                if let imageData = status.imagePFFile{
+                    imageData.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                        if let imageNSData = data{
+                            let image = UIImage(data: imageNSData)
+                                self.imageView.image = image
+                        }
+                        if let error = error{
+                            print("Error: \(error)")
+                        }
+                    })
+                }
             }
         }
     }

@@ -33,9 +33,27 @@ class API {
         
         let query = PFQuery(className: "Status")
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
+           
+            var statusArray = [Status]()
             print(results?.count)
-            for objects in results! {
-                //I have no idea what to put in here.  I would like to have the array of images back but I am not sure how to make that happen.  Need help!
+            
+            if let results = results{
+                for object in results {
+                 
+                   let imageFile = object["image"] as! PFFile
+                    let statusText = ""
+
+                    let status = Status(image: nil, statusText: statusText, thumbnail: nil, imagePFFile: imageFile)
+                    statusArray.append(status)
+                }
+                completion(statusArray)
+                
+                
+                }else{
+                    if let error = error{
+                        print("Error : \(error)")
+                        
+                    }
             }
         }
     }

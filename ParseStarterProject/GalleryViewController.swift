@@ -12,19 +12,42 @@ import UIKit
 
 class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var status = [Status]()
+    var status = [Status](){
+        didSet{
+           self.galleryCollectionView.reloadData()
+        }
+    }
+    
+    @IBOutlet weak var galleryCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.galleryCollectionView.delegate = self
+        self.galleryCollectionView.dataSource = self
         
             }
-
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchStatus()
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
 
-
+    func fetchStatus(){
+        API.getStatus { (results) -> () in
+            if let statusResult = results{
+               self.status = statusResult
+            }
+        }
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return self.status.count
     }
