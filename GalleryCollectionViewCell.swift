@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class GalleryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageView: UIImageView!
@@ -32,7 +31,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    // test 
+    // test
     
     class func identifier() ->String{
         return "GalleryCollectionViewCell"

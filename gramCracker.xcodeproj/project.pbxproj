@@ -25,6 +25,7 @@
 		90CE7FD11BEAD78300C3A39E /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FD01BEAD78300C3A39E /* GalleryViewController.swift */; };
 		90CE7FD31BEAE39C00C3A39E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE7FD21BEAE39C00C3A39E /* Status.swift */; };
 		90D3F3C01BEAE7DD00D23386 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D3F3BF1BEAE7DD00D23386 /* GalleryCollectionViewCell.swift */; };
+		90DAA4181BEC1A390024F43C /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DAA4171BEC1A390024F43C /* FilterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		90CE7FD01BEAD78300C3A39E /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		90CE7FD21BEAE39C00C3A39E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		90D3F3BF1BEAE7DD00D23386 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		90DAA4171BEC1A390024F43C /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				90BEE2701BE818C700846232 /* Constants.swift */,
 				90CE7FCE1BEAC0E500C3A39E /* API.swift */,
 				90D3F3BF1BEAE7DD00D23386 /* GalleryCollectionViewCell.swift */,
+				90DAA4171BEC1A390024F43C /* FilterCollectionViewCell.swift */,
 				90C1C5FF1BE95CE1000E7099 /* FilterService.swift */,
 				90CE7FD21BEAE39C00C3A39E /* Status.swift */,
 				907D21341BE861570026D11F /* Controller */,
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DAA4181BEC1A390024F43C /* FilterCollectionViewCell.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				90CE7FD11BEAD78300C3A39E /* GalleryViewController.swift in Sources */,
 				90C1C6021BE99530000E7099 /* UIImageResizer.swift in Sources */,
