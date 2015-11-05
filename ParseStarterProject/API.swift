@@ -33,12 +33,10 @@ class API {
         
         let query = PFQuery(className: "Status")
         query.findObjectsInBackgroundWithBlock { (results, error) -> Void in
-            print(results.count)
-            for object in results{
-                if let UIImageJPEGRepresentation(imag, 0.7) = imageData
+            print(results?.count)
+            for objects in results! {
+                //I have no idea what to put in here.  I would like to have the array of images back but I am not sure how to make that happen.  
+            }
+        }
     }
 }
-
-
-    
-

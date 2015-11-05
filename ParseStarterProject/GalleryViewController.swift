@@ -33,7 +33,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(<#T##identifier: String##String#>, forIndexPath: indexPath) as!
-        collectionViewCell
+        GalleryViewControllerCell
         
         let status = self.datasource[indexPath.row]
         cell.status = status
