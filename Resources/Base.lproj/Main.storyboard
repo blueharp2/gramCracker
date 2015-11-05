@@ -24,7 +24,7 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.9038616035" green="0.72111568309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-HT-XbN">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-HT-XbN">
                                 <rect key="frame" x="120" y="120" width="360" height="360"/>
                                 <animations/>
                                 <connections>
@@ -43,14 +43,20 @@
                                     <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lIS-bw-oeB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-Fi-lUL">
-                                <rect key="frame" x="186" y="80" width="228" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-Fi-lUL">
+                                <rect key="frame" x="352" y="488" width="228" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3QE-hO-bjH"/>
                                     <constraint firstAttribute="width" constant="228" id="RfT-fC-G99"/>
                                 </constraints>
-                                <state key="normal" title="Upload Image to gramCracker"/>
+                                <state key="normal" title="Upload "/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3QE-hO-bjH"/>
+                                        <exclude reference="RfT-fC-G99"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="UploadImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MTT-r0-cJp"/>
                                 </connections>
@@ -76,7 +82,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="0Pn-D2-0tn"/>
                                 <exclude reference="2uM-39-Onp"/>
+                                <exclude reference="7Ci-Jl-Bg5"/>
+                                <exclude reference="zAz-qk-ibu"/>
                             </mask>
                         </variation>
                     </view>
