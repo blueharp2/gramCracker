@@ -32,6 +32,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    // test 
     
     class func identifier() ->String{
         return "GalleryCollectionViewCell"
