@@ -20,11 +20,18 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     
+    var collectionViewCellScale = CGFloat(1.0){
+        didSet{
+            self.galleryCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.galleryCollectionView.delegate = self
         self.galleryCollectionView.dataSource = self
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinch:")
+        view.addGestureRecognizer(pinchGesture)
         
             }
     
@@ -38,7 +45,14 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidAppear(animated)
         
     }
-
+    func pinch(sender: UIPinchGestureRecognizer){
+        if let _ = sender.view{
+           self.collectionViewCellScale = self.collectionViewCellScale * sender.scale
+            sender.scale = 1.0
+        }
+        
+    }
+    
     func fetchStatus(){
         API.getStatus { (results) -> () in
             if let statusResult = results{
@@ -63,7 +77,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(200.00, 200.00)
+        let cellEdgeSize = 200.0 * collectionViewCellScale
+        return CGSizeMake(cellEdgeSize, cellEdgeSize)
     }
     
     
