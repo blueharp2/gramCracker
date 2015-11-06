@@ -11,7 +11,7 @@ import UIKit
 import Parse
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, NewGalleryViewControllerDelegate, UITabBarControllerDelegate {
     
     var filteredImages = [UIImage](){
         didSet{
@@ -57,6 +57,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
         filterCollectionView.hidden = true
+        self.tabBarController?.delegate = self
         
     }
     
@@ -130,58 +131,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    //
-    //    func presentFilterAlert(){
-    //        let alertController = UIAlertController(title: "Filters", message: "Pick a filter:", preferredStyle: .ActionSheet)
-    //
-    //        let applyBlackandWhiteEffect = UIAlertAction(title: "Black & White", style: .Default) { (action) -> Void in
-    //
-    //            FilterService.applyBlackandWhiteEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-    //                if let filteredImage = filteredImage{
-    //                    self.imageView.image = filteredImage
-    //                }
-    //            })
-    //
-    //        }
-    //        let applyVintageEffect = UIAlertAction(title: "Vintage", style: .Default) { (action) -> Void in
-    //
-    //            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-    //                if let filteredImage = filteredImage{
-    //                    self.imageView.image = filteredImage
-    //                }
-    //            })
-    //
-    //        }
-    //        let applyBlurandSparkleEffect = UIAlertAction(title: "Blur & Sparkle", style: .Default) { (action) -> Void in
-    //
-    //            FilterService.applyBlurandSparkleEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-    //                if let filteredImage = filteredImage{
-    //                    self.imageView.image = filteredImage
-    //                }
-    //            })
-    //
-    //        }
-    //        let applyChromeEffect = UIAlertAction(title: "Chrome", style: .Default) { (action) -> Void in
-    //
-    //            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-    //                if let filteredImage = filteredImage{
-    //                    self.imageView.image = filteredImage
-    //                }
-    //            })
-    //
-    //        }
-    //        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-    //
-    //            alertController.addAction(applyBlackandWhiteEffect)
-    //            alertController.addAction(applyVintageEffect)
-    //            alertController.addAction(applyBlurandSparkleEffect)
-    //            alertController.addAction(applyChromeEffect)
-    //            alertController.addAction(cancelAction)
-    //
-    //
-    //                self.presentViewController(alertController, animated: true, completion: nil)
-    //    }
-    
     //MARK: Image Picker
     func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
         let imagePickerController = UIImagePickerController()
@@ -222,6 +171,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         self.imageView.image = filteredImages[indexPath.row]
     }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if let viewController = viewController as? GalleryViewController {
+            viewController.delegate = self
+        }
+    }
+    func newGalleryViewControllerImageSelected(image: UIImage) {
+        self.imageView.image = image
+    }
 }
     
 
@@ -229,21 +187,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     
 
-    
-    
-    
-    
-    
-    
-    //override func viewDidLoad() {
-//        super.viewDidLoad()
-//        need line that converts image into data here
-//        let testObject = PFObject(className: "Status")
-//        testObject["image"] = imagedata
-//        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            print("Object has been saved.")
-//        }
-   // }
-    
     
     

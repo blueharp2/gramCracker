@@ -9,16 +9,23 @@
 import UIKit
 
 
+protocol NewGalleryViewControllerDelegate{
+    
+    func newGalleryViewControllerImageSelected(image: UIImage)
+}
+
 
 class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var status = [Status](){
-        didSet{
-           self.galleryCollectionView.reloadData()
-        }
-    }
+    
     
     @IBOutlet weak var galleryCollectionView: UICollectionView!
+   
+    
+    var delegate: NewGalleryViewControllerDelegate?
+    
+    
+    
     
     var collectionViewCellScale = CGFloat(1.0){
         didSet{
@@ -26,6 +33,12 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
+    var status = [Status](){
+        didSet{
+            self.galleryCollectionView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.galleryCollectionView.delegate = self
@@ -47,7 +60,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     func pinch(sender: UIPinchGestureRecognizer){
         if let _ = sender.view{
-           self.collectionViewCellScale = self.collectionViewCellScale * sender.scale
+           self.collectionViewCellScale = self.collectionViewCellScale / sender.scale
             sender.scale = 1.0
         }
         
@@ -81,12 +94,28 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         return CGSizeMake(cellEdgeSize, cellEdgeSize)
     }
     
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let image = self.status[indexPath.row].imagePFFile
+        image?.getDataInBackgroundWithBlock({ (data, error) -> Void in
+            if let imageNSData = data{
+                if let image = UIImage(data: imageNSData){
+                    if let delegate = self.delegate {
+                        delegate.newGalleryViewControllerImageSelected(image)
+                        
+                    }
+                }
+            }
+            if let error = error{
+                print("Error: \(error)")
+            }
+        })
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-
-
+    
+    
 }
