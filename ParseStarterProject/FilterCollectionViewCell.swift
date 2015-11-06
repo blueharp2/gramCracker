@@ -16,7 +16,7 @@ class FilterCollectionViewCell: UICollectionViewCell {
         
         didSet{
             if let image = filteredImages{
-                let size = CGSize(width: 100, height: 100)
+                let size = CGSize(width: 200, height: 200)
                 let thumbnail = UIImage.resizeImage(image, size: size)
                 self.filterCellImage.image = thumbnail
             }
