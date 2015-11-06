@@ -12,10 +12,12 @@ class FilterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var filterCellImage: UIImageView!
     
-    var filteredThumbnail : UIImage? {
+    var filteredImages : UIImage? {
         
         didSet{
-            if let thumbnail = filteredThumbnail{
+            if let image = filteredImages{
+                let size = CGSize(width: 100, height: 100)
+                let thumbnail = UIImage.resizeImage(image, size: size)
                 self.filterCellImage.image = thumbnail
             }
         }

@@ -13,7 +13,7 @@ import Parse
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var filteredThumbnails = [UIImage](){
+    var filteredImages = [UIImage](){
         didSet{
             self.filterCollectionView.reloadData()
         }
@@ -32,7 +32,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func filterButtonPressed(sender: UIButton) {
         displayFilterOptions { (image) -> () in
-            self.filteredThumbnails = image
+            self.filteredImages = image
+            self.filterCollectionView.hidden = false
         }
         
     }
@@ -55,6 +56,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
+        filterCollectionView.hidden = true
         
     }
     
@@ -95,36 +97,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     func displayFilterOptions(completion:(image: [UIImage]) ->()){
-        var thumbnailArray = [UIImage]()
+        var imageArray = [UIImage]()
         if let image = self.imageView.image{
-            let thumbnail = UIImage.resizeImage(image, size: CGSize(width: 100, height: 100))
+            //let thumbnail = UIImage.resizeImage(image, size: CGSize(width: 100, height: 100))
             
             
-            FilterService.applyBlackandWhiteEffect(thumbnail, completion: { (filteredImage, name) -> Void in
+            FilterService.applyBlackandWhiteEffect(image, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    thumbnailArray.append(filteredImage)
+                    imageArray.append(filteredImage)
                 }
                 
             })
-            FilterService.applyVintageEffect(thumbnail, completion: { (filteredImage, name) -> Void in
+            FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    thumbnailArray.append(filteredImage)
+                    imageArray.append(filteredImage)
                 }
                 
             })
-            FilterService.applyBlurandSparkleEffect(thumbnail, completion: { (filteredImage, name) -> Void in
+            FilterService.applyBlurandSparkleEffect(image, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    thumbnailArray.append(filteredImage)
+                    imageArray.append(filteredImage)
                 }
                 
             })
-            FilterService.applyChromeEffect(thumbnail, completion: { (filteredImage, name) -> Void in
+            FilterService.applyChromeEffect(image, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    thumbnailArray.append(filteredImage)
+                    imageArray.append(filteredImage)
                 }
                 
             })
-            completion(image: thumbnailArray)
+            completion(image: imageArray)
         }
     }
     
@@ -205,13 +207,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK:
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.filteredThumbnails.count
+        return self.filteredImages.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FilterCollectionViewCell", forIndexPath: indexPath) as! FilterCollectionViewCell
-        cell.filteredThumbnail = self.filteredThumbnails[indexPath.row]
+        cell.filteredImages = self.filteredImages[indexPath.row]
         
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let size = collectionView.frame.height
+        return CGSize(width: size, height: size)
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.imageView.image = filteredImages[indexPath.row]
     }
 }
     

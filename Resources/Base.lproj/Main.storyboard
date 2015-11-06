@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -19,13 +20,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-pT-PMq">
-                                <rect key="frame" x="120" y="20" width="360" height="360"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-pT-PMq">
+                                <rect key="frame" x="150" y="20" width="300" height="300"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.9038616035" green="0.72111568309999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3kq-pT-PMq" secondAttribute="height" multiplier="1:1" id="3b3-ME-Kd5"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEK-sJ-xGn">
-                                <rect key="frame" x="279" y="488" width="42" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEK-sJ-xGn">
+                                <rect key="frame" x="279" y="521" width="42" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3SD-PQ-j4B"/>
@@ -36,8 +40,8 @@
                                     <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lIS-bw-oeB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-Fi-lUL">
-                                <rect key="frame" x="378" y="488" width="102" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbW-Fi-lUL">
+                                <rect key="frame" x="526" y="521" width="54" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3QE-hO-bjH"/>
@@ -54,16 +58,8 @@
                                     <action selector="UploadImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MTT-r0-cJp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-HT-XbN">
-                                <rect key="frame" x="120" y="492" width="111" height="26"/>
-                                <animations/>
-                                <state key="normal" title="Select Image"/>
-                                <connections>
-                                    <action selector="imageViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nj-M9-PDZ"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZMF-vf-nzk" userLabel="Filter Collection View">
-                                <rect key="frame" x="120" y="388" width="360" height="92"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZMF-vf-nzk" userLabel="Filter Collection View">
+                                <rect key="frame" x="150" y="350" width="300" height="141"/>
                                 <animations/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fC6-mh-lGl">
                                     <size key="itemSize" width="78" height="86"/>
@@ -73,7 +69,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCollectionViewCell" id="qW3-WG-w9N" userLabel="Filter Collection View Cell" customClass="FilterCollectionViewCell" customModule="gramCracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="3" width="78" height="86"/>
+                                        <rect key="frame" x="0.0" y="28" width="78" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="78" height="86"/>
@@ -100,22 +96,42 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6g-HT-XbN">
+                                <rect key="frame" x="20" y="521" width="89" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Select Image"/>
+                                <connections>
+                                    <action selector="imageViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9nj-M9-PDZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="centerX" secondItem="3kq-pT-PMq" secondAttribute="centerX" id="0Pn-D2-0tn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lbW-Fi-lUL" secondAttribute="trailing" id="0z3-2f-NTT"/>
+                            <constraint firstItem="ZMF-vf-nzk" firstAttribute="width" secondItem="3kq-pT-PMq" secondAttribute="width" id="1GO-UL-3at"/>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="top" secondItem="lbW-Fi-lUL" secondAttribute="bottom" constant="8" id="2uM-39-Onp"/>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="top" secondItem="lbW-Fi-lUL" secondAttribute="bottom" constant="10" id="7Ci-Jl-Bg5"/>
+                            <constraint firstItem="ZMF-vf-nzk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7NW-cM-Ivu"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ByE-f9-c2y"/>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hw8-mg-o6g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TEK-sJ-xGn" secondAttribute="bottom" id="KMr-rv-R4G"/>
+                            <constraint firstItem="3kq-pT-PMq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="Ls4-6z-cf5"/>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="width" secondItem="3kq-pT-PMq" secondAttribute="width" id="Nq9-pE-RHd"/>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="height" secondItem="3kq-pT-PMq" secondAttribute="height" id="Phk-cN-3Xu"/>
+                            <constraint firstItem="3kq-pT-PMq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UPH-69-bTi"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="VHf-OP-TYA"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VTC-zI-Ciz"/>
                             <constraint firstItem="TEK-sJ-xGn" firstAttribute="top" secondItem="r6g-HT-XbN" secondAttribute="bottom" constant="8" id="YjD-U6-Ifz"/>
+                            <constraint firstItem="3kq-pT-PMq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="awl-2V-zyZ"/>
                             <constraint firstItem="TEK-sJ-xGn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d0g-YV-XjD"/>
+                            <constraint firstItem="TEK-sJ-xGn" firstAttribute="top" secondItem="ZMF-vf-nzk" secondAttribute="bottom" constant="30" id="hBF-RL-1ze"/>
                             <constraint firstItem="3kq-pT-PMq" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="hh5-rU-QvB"/>
                             <constraint firstItem="TEK-sJ-xGn" firstAttribute="top" secondItem="r6g-HT-XbN" secondAttribute="bottom" constant="8" id="pPv-iP-bfx"/>
+                            <constraint firstItem="r6g-HT-XbN" firstAttribute="baseline" secondItem="TEK-sJ-xGn" secondAttribute="baseline" id="vcA-7V-VTI"/>
+                            <constraint firstItem="lbW-Fi-lUL" firstAttribute="baseline" secondItem="TEK-sJ-xGn" secondAttribute="baseline" id="xKx-Ih-G96"/>
+                            <constraint firstItem="ZMF-vf-nzk" firstAttribute="top" secondItem="3kq-pT-PMq" secondAttribute="bottom" constant="30" id="xri-x5-pVe"/>
                             <constraint firstItem="lbW-Fi-lUL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zAz-qk-ibu"/>
                             <constraint firstItem="r6g-HT-XbN" firstAttribute="centerY" secondItem="3kq-pT-PMq" secondAttribute="centerY" id="zsU-p3-doG"/>
                         </constraints>
