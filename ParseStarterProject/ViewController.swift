@@ -11,7 +11,16 @@ import UIKit
 import Parse
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    var filteredThumbnails = [UIImage](){
+        didSet{
+            self.filterCollectionView.reloadData()
+        }
+    }
+    
+    
+    @IBOutlet weak var filterCollectionView: UICollectionView!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -22,9 +31,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func filterButtonPressed(sender: UIButton) {
-        presentFilterAlert()
+        displayFilterOptions { (image) -> () in
+            self.filteredThumbnails = image
+        }
+        
     }
-
+    
     
     @IBAction func UploadImage(sender: UIButton) {
         
@@ -33,7 +45,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             API.uploadImage(image, completion: { (sucess) -> () in
                 if sucess {
                     sender.enabled = true
-                  self.presentUploadSucessAlert()
+                    self.presentUploadSucessAlert()
                 }
             })
         }
@@ -41,6 +53,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterCollectionView.delegate = self
+        filterCollectionView.dataSource = self
         
     }
     
@@ -80,56 +94,91 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    func presentFilterAlert(){
-        let alertController = UIAlertController(title: "Filters", message: "Pick a filter:", preferredStyle: .ActionSheet)
-        
-        let applyBlackandWhiteEffect = UIAlertAction(title: "Black & White", style: .Default) { (action) -> Void in
+    func displayFilterOptions(completion:(image: [UIImage]) ->()){
+        var thumbnailArray = [UIImage]()
+        if let image = self.imageView.image{
+            let thumbnail = UIImage.resizeImage(image, size: CGSize(width: 100, height: 100))
             
-            FilterService.applyBlackandWhiteEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+            
+            FilterService.applyBlackandWhiteEffect(thumbnail, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
+                    thumbnailArray.append(filteredImage)
                 }
+                
             })
-            
-        }
-        let applyVintageEffect = UIAlertAction(title: "Vintage", style: .Default) { (action) -> Void in
-            
-            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+            FilterService.applyVintageEffect(thumbnail, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
+                    thumbnailArray.append(filteredImage)
                 }
+                
             })
-            
-        }
-        let applyBlurandSparkleEffect = UIAlertAction(title: "Blur & Sparkle", style: .Default) { (action) -> Void in
-            
-            FilterService.applyBlurandSparkleEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+            FilterService.applyBlurandSparkleEffect(thumbnail, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
+                    thumbnailArray.append(filteredImage)
                 }
+                
             })
-            
-        }
-        let applyChromeEffect = UIAlertAction(title: "Chrome", style: .Default) { (action) -> Void in
-            
-            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+            FilterService.applyChromeEffect(thumbnail, completion: { (filteredImage, name) -> Void in
                 if let filteredImage = filteredImage{
-                    self.imageView.image = filteredImage
+                    thumbnailArray.append(filteredImage)
                 }
+                
             })
-            
+            completion(image: thumbnailArray)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-       
-            alertController.addAction(applyBlackandWhiteEffect)
-            alertController.addAction(applyVintageEffect)
-            alertController.addAction(applyBlurandSparkleEffect)
-            alertController.addAction(applyChromeEffect)
-            alertController.addAction(cancelAction)
-        
-        
-                self.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    //
+    //    func presentFilterAlert(){
+    //        let alertController = UIAlertController(title: "Filters", message: "Pick a filter:", preferredStyle: .ActionSheet)
+    //
+    //        let applyBlackandWhiteEffect = UIAlertAction(title: "Black & White", style: .Default) { (action) -> Void in
+    //
+    //            FilterService.applyBlackandWhiteEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+    //                if let filteredImage = filteredImage{
+    //                    self.imageView.image = filteredImage
+    //                }
+    //            })
+    //
+    //        }
+    //        let applyVintageEffect = UIAlertAction(title: "Vintage", style: .Default) { (action) -> Void in
+    //
+    //            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+    //                if let filteredImage = filteredImage{
+    //                    self.imageView.image = filteredImage
+    //                }
+    //            })
+    //
+    //        }
+    //        let applyBlurandSparkleEffect = UIAlertAction(title: "Blur & Sparkle", style: .Default) { (action) -> Void in
+    //
+    //            FilterService.applyBlurandSparkleEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+    //                if let filteredImage = filteredImage{
+    //                    self.imageView.image = filteredImage
+    //                }
+    //            })
+    //
+    //        }
+    //        let applyChromeEffect = UIAlertAction(title: "Chrome", style: .Default) { (action) -> Void in
+    //
+    //            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+    //                if let filteredImage = filteredImage{
+    //                    self.imageView.image = filteredImage
+    //                }
+    //            })
+    //
+    //        }
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+    //
+    //            alertController.addAction(applyBlackandWhiteEffect)
+    //            alertController.addAction(applyVintageEffect)
+    //            alertController.addAction(applyBlurandSparkleEffect)
+    //            alertController.addAction(applyChromeEffect)
+    //            alertController.addAction(cancelAction)
+    //
+    //
+    //                self.presentViewController(alertController, animated: true, completion: nil)
+    //    }
     
     //MARK: Image Picker
     func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
@@ -152,11 +201,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    //MARK:
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.filteredThumbnails.count
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FilterCollectionViewCell", forIndexPath: indexPath) as! FilterCollectionViewCell
+        cell.filteredThumbnail = self.filteredThumbnails[indexPath.row]
+        
+        return cell
+    }
 }
+    
+
+
 
     
-    
-    
+
     
     
     

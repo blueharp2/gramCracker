@@ -139,6 +139,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Choose Photo" id="gLC-ea-KGW"/>
                     <connections>
+                        <outlet property="filterCollectionView" destination="ZMF-vf-nzk" id="3Gf-S5-cHR"/>
                         <outlet property="imageView" destination="3kq-pT-PMq" id="D1B-Ok-Ext"/>
                     </connections>
                 </viewController>
