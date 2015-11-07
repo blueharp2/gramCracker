@@ -62,6 +62,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         if let _ = sender.view{
            self.collectionViewCellScale = self.collectionViewCellScale / sender.scale
             sender.scale = 1.0
+            //Add max/min limit here to control errors
         }
         
     }
